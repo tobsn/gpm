@@ -32,6 +32,7 @@ try {
   , "help"
   , "cache"
   , "test"
+  , "search"
   , "stop"
   , "start"
   , "restart"

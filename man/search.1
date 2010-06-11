@@ -1,0 +1,39 @@
+.\" generated with Ronn/v0.4.1
+.\" http://github.com/rtomayko/ronn/
+.
+.TH "NPM\-SEARCH" "11" "May 2010" "" ""
+.
+.SH "NAME"
+\fBnpm\-search\fR \-\- List packages matching a filter
+.
+.SH "SYNOPSIS"
+.
+.nf
+npm search [filter]
+.
+.fi
+.
+.SH "DESCRIPTION"
+This command will print to stdout all the versions of a package that
+match the given arguments in their name, tags, or description. These
+packages are accumulated from packages installed or available in the
+registry, with their tags and whether or not they're active and/or
+stable.
+.
+.P
+The filter used represents a Javascript RegExp Object an has all the
+features of such. It is case insensitive as well.
+.
+.IP "" 4
+.
+.nf
+npm search @stable
+.
+.fi
+.
+.IP "" 0
+.
+.P
+Strings are matched using the JavaScript "split" function, so regular
+expression strings are ok.  However, the highlighting is a simple
+split/join, so regexps probably won't get the funky colors.
