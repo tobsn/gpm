@@ -8,12 +8,10 @@
 .
 .SH "SYNOPSIS"
 .
-.nf
 npm search [filter]
-.
-.fi
-.
+.P
 .SH "DESCRIPTION"
+.P
 This command will print to stdout all the versions of a package that
 match the given arguments in their name, tags, or description. These
 packages are accumulated from packages installed or available in the
@@ -21,19 +19,15 @@ registry, with their tags and whether or not they're active and/or
 stable.
 .
 .P
+
 The filter used represents a Javascript RegExp Object an has all the
 features of such. It is case insensitive as well.
 .
-.IP "" 4
-.
-.nf
-npm search @stable
-.
-.fi
-.
-.IP "" 0
-.
 .P
-Strings are matched using the JavaScript "split" function, so regular
-expression strings are ok.  However, the highlighting is a simple
-split/join, so regexps probably won't get the funky colors.
+To filter a single package or state, you can provide words to filter on
+and highlight (if appropriate).  For instance, to see all the
+packages relating to irc, you could do this:
+.
+.IP " " 4
+npm search irc
+
