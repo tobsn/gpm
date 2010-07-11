@@ -1,3 +1,11 @@
+// kludge until this is normal.
+if (!process.EventEmitter.prototype.on) {
+  process.EventEmitter.prototype.on = process.EventEmitter.prototype.addListener
+}
+var path = require("path")
+if (!process.execPath) {
+  process.execPath = path.join(process.installPrefix, "bin", "node")
+}
 
 var npm = exports
   , set = require("./lib/utils/set")
@@ -5,9 +13,9 @@ var npm = exports
   , ini = require("./lib/utils/ini")
   , log = require("./lib/utils/log")
   , fs = require("fs")
-  , path = require("path")
 
 npm.commands = {}
+npm.SHOULD_EXIT = true
 
 try {
   var j = JSON.parse(fs.readFileSync(path.join(__dirname, "package.json"))+"")
@@ -16,7 +24,6 @@ try {
   log(ex, "error reading version")
   npm.version = ex
 }
-
 
 ; [ "install"
   , "activate"
@@ -91,4 +98,4 @@ Object.defineProperty(npm, "tmp",
   , enumerable:true
   })
 
-process.addListener("exit", function () { ini.save() })
+process.on("exit", function () { ini.save() })

@@ -171,6 +171,15 @@ See <http://github.com/isaacs/npm/issues> for current todo list.
 	Handle thrown errors  
 	Handle .npmignore
 
+* 0.1.17:
+  Stabilization.
+
+* 0.1.18:
+  Change a few default configurations  
+  Add test harness  
+  Default publish, install, and link to "." if no arguments given  
+
+
 ## SEE ALSO
 
 npm-help(1)  

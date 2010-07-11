@@ -2,13 +2,16 @@
 
 // don't assume that npm is installed in any particular spot, since this
 // might conceivably be a bootstrap attempt.
+var log = require("./lib/utils/log")
+
+log("ok", "it worked if it ends with")
+
 var fs = require("fs")
   , path = require("path")
   , sys = require("sys")
   , npm = require("./npm")
 
   // supported commands.
-  , log = require("./lib/utils/log")
   , argv = process.argv.slice(2)
   , arg = ""
 
@@ -19,7 +22,6 @@ var fs = require("fs")
   , flagsDone
 
 log(sys.inspect(argv), "cli")
-log(npm.version, "version")  
 
 while (arg = argv.shift()) {
   if (!command && (arg in npm.commands)) {
@@ -41,9 +43,19 @@ if (key) conf[key] = true
 npm.argv = arglist
 for (var k in conf) npm.config.set(k, conf[k])
 
-process.addListener("uncaughtException", errorHandler)
+var vindex = arglist.indexOf("-v")
+  , printVersion = vindex !== -1 || conf.version
+if (printVersion) {
+  sys.puts(npm.version)
+  if (vindex !== -1) arglist.splice(vindex, 1)
+} else log(npm.version, "version")  
 
-if (!command) {
+process.on("uncaughtException", errorHandler)
+process.on("exit", function () { if (!itWorked) log("not ok") })
+
+var itWorked = false
+
+if (!command) { if (!printVersion) {
   // npm.commands.help([arglist.join(" ")])
   if (arglist.length) log(arglist, "unknown command")
   sys.error( "What do you want me to do?\n\n"
@@ -52,16 +64,22 @@ if (!command) {
            + "Check 'man npm' or 'man npm-help' for more information\n\n"
            + "This is supposed to happen.  "
            )
-} else npm.commands[command](arglist, errorHandler)
+  process.exit(1)
+}} else npm.commands[command](arglist, errorHandler)
 
 function errorHandler (er) {
-  if (er) {
-    sys.error("")
-    log(er, "!")
-    sys.error("")
-    log("try running: 'npm help "+command+"'", "failure")
-    log("Report this *entire* log at <http://github.com/isaacs/npm/issues>", "failure")
-    log("or email it to <npm-@googlegroups.com>", "failure")
-  } else log("ok")
+  if (!er) {
+    itWorked = true
+    log("ok")
+    if (npm.SHOULD_EXIT) process.exit()
+    return
+  }
+  sys.error("")
+  log(er, "!")
+  sys.error("")
+  log("try running: 'npm help "+command+"'", "failure")
+  log("Report this *entire* log at <http://github.com/isaacs/npm/issues>", "failure")
+  log("or email it to <npm-@googlegroups.com>", "failure")
+  process.exit(1)
 }
 

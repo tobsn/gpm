@@ -1,12 +1,15 @@
 { "name" : "npm"
 , "description" : "A package manager for node"
-, "version" : "0.1.16"
+, "version" : "0.1.19"
 , "author" : "Isaac Z. Schlueter <i@izs.me>"
 , "contributors" :
   [ "Steve Steiner <ssteinerX@gmail.com>"
   , "Mikeal Rogers <mikeal.rogers@gmail.com>"
   , "Aaron Blohowiak <aaron.blohowiak@gmail.com>"
   , "Martyn Smith <martyn@dollyfish.net.nz>"
+  , "Mathias Pettersson <mape@mape.me>"
+  , "Brian Hammond <brian@fictorial.com>"
+  , "Charlie Robbins <charlie.robbins@gmail.com>"
   ]
 , "repository" :
   { "type" : "git"
@@ -20,10 +23,11 @@
 , "directories" : { "lib" : "./lib/" }
 , "main" : "./npm"
 , "bin" : { "npm" : "./cli.js" }
-, "engines" : { "node" : ">=0.1.97" }
+, "engines" : { "node" : ">=0.1.99" }
 , "scripts" :
   { "activate" : "node scripts/install-docs.js"
   , "deactivate" : "node scripts/install-docs.js"
+  , "test" : "make test"
   }
 , "licenses" :
   [ { "type" : "MIT"
