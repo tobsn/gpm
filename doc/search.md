@@ -104,7 +104,7 @@ Allows you to sort the list of results in specific orders stabily. Adding '-reve
  * created - sort chronologically by package creation time
  * modified - sort chronologically by package's last modification time
 
-##### Example
+#### Example
 
 Listing the installed packages first and then sorting by name
 
@@ -119,18 +119,18 @@ Listing the installed packages first and then sorting by name
 
 Allows you to template the output format of npm in a mustache.js style templating engine. Unlike mustache.js whitespace is preserved.
 
-##### Additions to mustache.js syntax
+#### Additions to mustache.js syntax
 
- * looping can now do slices w/ [x..y] (akin to Array.slice). 0 indexed.
-   , [x..] is from x to the end
-   , [..x] is from the start to x
-   , [x] is just the element at x
+ * looping can now do slices w/ `[x..y]` (akin to Array.slice). 0 indexed.
+   , `[x..]` is from x to the end
+   , `[..x]` is from the start to x
+   , `[x]` is just the element at x
    , negatives are allowed
  * {{|}} is the length of a loop
  * {{@}} is the index of a loop)
  * exterior variables are available to enumerable loops as long as they are not masked
 
-##### Example
+#### Example
 
     > npm search --format "{{name}} by{{#maintainers}} {{name}},{{/maintainers}}"
     bar by me, you,
