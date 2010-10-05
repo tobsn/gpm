@@ -13,12 +13,6 @@ npm.commands = {}
 npm.ELIFECYCLE = {}
 npm.E404 = {}
 
-if (process.getuid() === 0) {
-  log.error( "\nRunning npm as root is not recommended!\n"
-           + "Use `sudo npm fix-root` to fix this.\n"
-           , "sudon't!")
-}
-
 try {
   var j = JSON.parse(fs.readFileSync(path.join(__dirname, "package.json"))+"")
   npm.version = j.version
