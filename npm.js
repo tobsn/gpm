@@ -15,7 +15,8 @@ npm.E404 = {}
 
 if (process.getuid() === 0) {
   log.error( "\nRunning npm as root is not recommended!\n"
-           + "Seriously, don't do this!\n", "sudon't!")
+           + "Use `sudo npm fix-root` to fix this.\n"
+           , "sudon't!")
 }
 
 try {
@@ -56,6 +57,7 @@ var commandCache = {}
   , "rebuild"
   , "bundle"
   , "outdated"
+  , "fix-root"
   ].forEach(function (c) {
     Object.defineProperty(npm.commands, c, { get : function () {
       c = c === "list" ? "ls"
