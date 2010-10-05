@@ -37,7 +37,7 @@ making it group-writable and adding your user to the group that owns it.
 
 ### Option 2: Multi-user Setup
 
-Run `npm fix-root`.  Enter new values for the settings there, so that npm
+Run `npm multiuser`.  Enter new values for the settings there, so that npm
 can run in a non-root-owned manner.
 
 Once you do this, there will effectively be two different sets of packages.

@@ -74,9 +74,9 @@ else {
     arglist.unshift(command)
     command = "help"
   }
-  if (process.getuid() === 0 && command !== "fix-root") {
+  if (process.getuid() === 0 && command !== "multiuser") {
     log.warn( "\nRunning npm as root is not recommended.\n"
-            + "Use `sudo npm fix-root` to fix this.\n"
+            + "Use `sudo npm multiuser` to fix this.\n"
             , "sudo")
   }
   ini.resolveConfigs(conf, function (er) {
