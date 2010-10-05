@@ -35,35 +35,14 @@ never use sudo again to install stuff in /usr/local:
 You could also give your user permission to write into that directory by
 making it group-writable and adding your user to the group that owns it.
 
-### Option 2: Don't leave $HOME
+### Option 2: Multi-user Setup
 
-Install node in `$HOME/local` and npm will default to living right alongside
-it.  Follow the steps in this gist: <http://gist.github.com/579814>
+Run `npm fix-root`.  Enter new values for the settings there, so that npm
+can run in a non-root-owned manner.
 
-### Option 3: Customize npm to your heart's content
-
-Create and edit a file at `~/.npmrc`.  This is an ini-formatted file, which
-you can use to set npm configs.  Do something like this to it:
-
-    cat >>~/.npmrc <<NPMRC
-    root = ~/.node_libraries
-    binroot = ~/bin
-    manroot = ~/share/man
-    NPMRC
-
-### Option 4: HOLY COW NOT RECOMMENDED!!
-
-You *can* just use sudo all the time for everything, and ignore the incredibly
-obnoxious warnings telling you that you're insane for doing this.
-
-    # you must REALLY trust me to do this!
-    curl http://npmjs.org/install.sh | sudo sh
-    sudo npm ls
-    sudo npm install please-pwn-my-machine-kthx
-
-If this causes horrible things to happen, you can't say I didn't warn you over
-and over again until everyone got sick of hearing about it and told me to shut
-up already.
+Once you do this, there will effectively be two different sets of packages.
+The first, global, and controlled by root.  The second, per-user, and in their
+$HOME directory.
 
 It is on the roadmap to make npm do a bunch of chown/setuid stuff when sudoed,
 so eventually it'll actually be *safer* to run as root than as a user account,
