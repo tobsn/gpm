@@ -76,6 +76,11 @@ else {
   }
   ini.resolveConfigs(conf, function (er) {
     if (er) return errorHandler(er)
+    if (process.getuid() === 0 && command !== "fix-root") {
+      log.error( "\nRunning npm as root is not recommended!\n"
+               + "Use `sudo npm fix-root` to fix this.\n"
+               , "sudon't!")
+    }
     npm.config.set("root", ini.get("root"))
     npm.commands[command](arglist, errorHandler)
   })
