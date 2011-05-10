@@ -11,7 +11,7 @@ Much more info available via `gpm help` once it's installed.
 To install an old **and unsupported** version of gpm that works on node 0.3
 and prior:
 
-    git clone git://github.com/isaacs/gpm.git ./gpm
+    git clone git://github.com/tobsn/gpm.git ./gpm
     cd gpm
     git checkout origin/0.2
     make dev
@@ -32,7 +32,7 @@ To say "yes" to the 0.x cleanup, but skip the prompt:
 
 If that fails, try this:
 
-    git clone http://github.com/isaacs/gpm.git
+    git clone http://github.com/tobsn/gpm.git
     cd gpm
     sudo make install
 
@@ -122,15 +122,15 @@ help config` to learn about all the options you can set there.
 
 ## More Docs
 
-Check out the [docs](http://github.com/isaacs/gpm/blob/master/doc/),
+Check out the [docs](http://github.com/tobsn/gpm/blob/master/doc/),
 especially the
-[faq](http://github.com/isaacs/gpm/blob/master/doc/faq.md#readme).
+[faq](http://github.com/tobsn/gpm/blob/master/doc/faq.md#readme).
 
 You can use the `gpm help` command to read any of them.
 
 If you're a developer, and you want to use gpm to publish your program,
 you should
-[read this](http://github.com/isaacs/gpm/blob/master/doc/developers.md#readme)
+[read this](http://github.com/tobsn/gpm/blob/master/doc/developers.md#readme)
 
 ## Legal Stuff
 
