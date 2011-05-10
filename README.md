@@ -46,7 +46,7 @@ and gpm will install itself.
 If you don't have make, and don't have curl or git, and ALL you have is
 this code and node, you can probably do this:
 
-    sudo node ./cli.js install -g
+    sudo node ./cli.js install
 
 However, note that github tarballs **do not contain submodules**, so
 those won't work.  You'll have to also fetch the appropriate submodules
@@ -81,7 +81,7 @@ to prevent it from ever running in unsafe mode, even as non-root users.
 
 So sad to see you go.
 
-    sudo gpm uninstall gpm -g
+    sudo gpm uninstall gpm 
 
 Or, if that fails,
 
@@ -99,7 +99,7 @@ remove them.
 To remove cruft left behind by gpm 0.x, you can use the included
 `clean-old.sh` script file.  You can run it conveniently like this:
 
-    gpm explore gpm -g -- sh scripts/clean-old.sh
+    gpm explore gpm -- sh scripts/clean-old.sh
 
 ## Using gpm Programmatically
 
